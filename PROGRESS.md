@@ -107,7 +107,19 @@ ChaCha20-Poly1305, бинарный plist SETUP, NTP-timing AirPlay 2 realtime s
 - бинарь забран в RaopBridgeAP2/Bin/ (ELF aarch64, stripped,
   sha1 4c7884e123d65ee571061a37e26356cd064f0cb4)
 
-Текущий шаг: **Сессия 3.1 ЗАВЕРШЕНА. Инверсия громкости устранена.**
+Текущий шаг: **Сессия 4 ЗАВЕРШЕНА: git-репозиторий создан и запушен.**
+
+- Remote: git@github.com:knovash/lms-plugin-airplay-libroap.git (ветка main)
+- Пароль root вынесен из скриптов → ~/.lms_pass (chmod 600) или env LMS_PASS
+- .gitignore: build/ (1.4 ГБ исходников), dist/, .idea/ — в гит не входят
+- Наши правки исходников сохранены в patches/
+  (0001-squeezelite-audg-volume-unconditional.patch + remote_build.sh + README)
+- В гите: плагин (с бинарем 9 МБ), скрипты build/deploy/dist, repo.xml,
+  PROGRESS.md, patches/
+
+Восстановление после зависания: git clone + прочитать PROGRESS.md +
+создать ~/.lms_pass, скопировать build/LMS-Raop (отдельно, не в гите:
+клон philippe44 + сабмодули airplay2 по README).
 
 Патч v2 (slimproto.c): безусловный колбэк SQ_VOLUME + gain из OLD-полей
 (шкала 0..128 — правильный индекс LMSVolumeMap[129]). Задеплоено 09:53,
