@@ -1,0 +1,15 @@
+# служебное
+.idea/
+dist/
+*.pid
+*.log
+nohup.out
+__pycache__/
+
+# дерево исходников philippe44 (1.4 ГБ) — не в гит; наши правки см. patches/
+build/
+
+# случайные артефакты
+*.zip
+*.orig
+.DS_Store

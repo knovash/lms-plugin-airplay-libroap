@@ -1,0 +1,22 @@
+diff --git a/application/squeezelite/slimproto.c b/application/squeezelite/slimproto.c
+index e1b7027..fd1a503 100644
+--- a/application/squeezelite/slimproto.c
++++ b/application/squeezelite/slimproto.c
+@@ -439,9 +439,14 @@ static void process_audg(u8_t *pkt, int len, struct thread_ctx_s *ctx) {
+ 
+ 	UNLOCK_O;
+ 
+-	if (audg->adjust) {
+-		ctx->callback(ctx->MR, SQ_VOLUME, gain);
+-    }
++	// RaopBridgeAP2 patch: LMS при mixer volume шлёт adjust(dvc)=0, из-за
++	// `if (audg->adjust)` громкость вообще не уходила в AirPlay — колбэк
++	// делаем безусловным. gain берём ИЗ OLD-ПОЛЕЙ: LMS кладёт туда громкость
++	// в «старой» шкале 0..128 (volume_map), это и есть индекс для
++	// LMSVolumeMap[129]; NEW-поля — 16.16 fixed (dBToFixed), как индекс
++	// использовать нельзя (выход за границы таблицы = мусорная громкость).
++	gain = (audg->old_gainL + audg->old_gainR) / 2;
++	ctx->callback(ctx->MR, SQ_VOLUME, gain);
+ }
+ 
+ /*---------------------------------------------------------------------------*/

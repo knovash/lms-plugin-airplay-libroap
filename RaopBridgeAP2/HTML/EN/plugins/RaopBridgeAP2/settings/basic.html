@@ -1,0 +1,88 @@
+[% PROCESS settings/header.html %]
+
+	[% IF saved %]
+		<div class="prefIntro">[% "RAOPBRIDGEAP2_SAVED" | string %]</div>
+	[% END %]
+	[% IF scanned %]
+		<div class="prefIntro">[% "RAOPBRIDGEAP2_SCANNED" | string %]</div>
+	[% END %]
+	[% IF scanerror %]
+		<div class="prefIntro" style="color:red">[% "RAOPBRIDGEAP2_SCANERROR" | string %]: [% scanerror %]</div>
+	[% END %]
+	[% IF restarted %]
+		<div class="prefIntro">[% "RAOPBRIDGEAP2_RESTARTED" | string %]</div>
+	[% END %]
+	[% IF stopped %]
+		<div class="prefIntro">[% "RAOPBRIDGEAP2_STOPPED" | string %]</div>
+	[% END %]
+
+	[% WRAPPER setting title="RAOPBRIDGEAP2_STATUS" desc="RAOPBRIDGEAP2_STATUS_DESC" %]
+		[% IF running %]
+			<span style="color:#080"><b>&#9679; [% "RAOPBRIDGEAP2_RUNNING" | string %]</b></span>
+		[% ELSIF binfound %]
+			<span style="color:#c00">&#9679; [% "RAOPBRIDGEAP2_NOT_RUNNING" | string %]</span>
+		[% ELSE %]
+			<span style="color:#c00">[% "RAOPBRIDGEAP2_NO_BINARY" | string %]</span>
+		[% END %]
+		[% IF binpath %]<p class="prefDesc">[% binpath %]</p>[% END %]
+		<p>
+			<input name="restartSettings" type="submit" value="[% 'RAOPBRIDGEAP2_RESTART' | string %]">
+			&nbsp;
+			<input name="stopSettings" type="submit" style="color:red" value="[% 'RAOPBRIDGEAP2_STOP' | string %]"
+				onclick="return confirm('[% 'RAOPBRIDGEAP2_STOP_CONFIRM' | string %]')">
+		</p>
+	[% END %]
+
+	[% WRAPPER setting title="RAOPBRIDGEAP2_DEVICES" desc="RAOPBRIDGEAP2_DEVICES_DESC" %]
+		[% IF devices.size %]
+		<table class="pluginsListTable" style="width:100%; border-collapse:collapse; margin-bottom:8px">
+			<tr style="text-align:left">
+				<th style="padding:3px 8px">On</th>
+				<th style="padding:3px 8px">Name</th>
+				<th style="padding:3px 8px">MAC</th>
+				<th style="padding:3px 8px">UDN</th>
+			</tr>
+			[% FOREACH d IN devices %]
+			<tr style="border-top:1px solid #ddd">
+				<td style="padding:3px 8px">
+					<input type="checkbox" name="devenabled_[% loop.index %]" value="1" [% IF d.enabled %]checked[% END %] />
+					<input type="hidden" name="devudn_[% loop.index %]" value="[% d.udn | html %]" />
+				</td>
+				<td style="padding:3px 8px">[% d.name | html %]</td>
+				<td style="padding:3px 8px; font-family:monospace">[% d.mac | html %]</td>
+				<td style="padding:3px 8px; font-size:10px; color:#777">[% d.udn | html %]</td>
+			</tr>
+			[% END %]
+		</table>
+		[% END %]
+		<p>
+			<input name="scanSettings" type="submit" value="[% 'RAOPBRIDGEAP2_SCAN' | string %]">
+			&nbsp;<span class="prefDesc">[% 'RAOPBRIDGEAP2_SCAN_HINT' | string %]</span>
+		</p>
+	[% END %]
+
+	[% WRAPPER setting title="RAOPBRIDGEAP2_CONFIG" desc="RAOPBRIDGEAP2_CONFIG_DESC" %]
+		<textarea name="configxml" rows="18" style="width:100%; font-family:monospace">[% configxml | html %]</textarea>
+		<p class="prefDesc">[% 'RAOPBRIDGEAP2_CONFIG_NOTE' | string %]</p>
+	[% END %]
+
+	[% WRAPPER setting title="RAOPBRIDGEAP2_ENABLED" desc="RAOPBRIDGEAP2_ENABLED_DESC" %]
+		<input type="checkbox" name="pref_enabled" id="pref_enabled" [% IF pref_enabled %]checked[% END %] value="1" />
+	[% END %]
+
+	[% WRAPPER setting title="RAOPBRIDGEAP2_BINPATH" desc="RAOPBRIDGEAP2_BINPATH_DESC" %]
+		<input type="text" name="pref_binpath" id="pref_binpath" size="60" value="[% pref_binpath | html %]" />
+	[% END %]
+
+	[% WRAPPER setting title="RAOPBRIDGEAP2_LOG" desc="RAOPBRIDGEAP2_LOG_DESC" %]
+		<pre style="max-height:260px; overflow:auto; background:#f4f4f4; padding:6px; font-size:11px">[% logtail | html %]</pre>
+	[% END %]
+
+	[% IF pluginversion %]
+	<p class="prefDesc" style="margin-top:14px">
+		<b>RaopBridgeAP2 v[% pluginversion %]</b> &mdash; squeeze2raop 1.8.12 + <a href="https://github.com/philippe44/libraop/pull/55" target="_blank">libraop PR #55</a> (bartleman):<br>
+		AirPlay 2 / HomeKit transient pairing &mdash; audio on HomePodOS 27+. Thanks to philippe44, bartleman.
+	</p>
+	[% END %]
+
+[% PROCESS settings/footer.html %]

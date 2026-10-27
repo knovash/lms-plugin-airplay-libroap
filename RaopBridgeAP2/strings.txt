@@ -1,0 +1,109 @@
+# RaopBridgeAP2 plugin strings
+
+PLUGIN_RAOPBRIDGE_AP2
+	ru	Raop Bridge AP2
+	en	Raop Bridge AP2
+
+PLUGIN_RAOPBRIDGE_AP2_DESC
+	ru	AirPlay 2 (HomeKit transient pairing) для HomePodOS 27+ через патченый squeeze2raop (libraop PR #55)
+	en	AirPlay 2 (HomeKit transient pairing) for HomePodOS 27+ via patched squeeze2raop (libraop PR #55)
+
+RAOPBRIDGEAP2_STATUS
+	ru	Состояние
+	en	Status
+
+RAOPBRIDGEAP2_STATUS_DESC
+	ru	Демон squeeze2raop и его бинаррь. Падения поднимаются автоматически раз в 30 секунд.
+	en	squeeze2raop daemon and its binary. Crashes are auto-recovered every 30 seconds.
+
+RAOPBRIDGEAP2_RUNNING
+	ru	работает
+	en	running
+
+RAOPBRIDGEAP2_NOT_RUNNING
+	ru	не запущен
+	en	not running
+
+RAOPBRIDGEAP2_NO_BINARY
+	ru	бинаррь squeeze2raop не найден в Bin/ плагина
+	en	squeeze2raop binary not found in plugin Bin/
+
+RAOPBRIDGEAP2_RESTART
+	ru	Перезапустить демон
+	en	Restart daemon
+
+RAOPBRIDGEAP2_RESTARTED
+	ru	Демон перезапущен.
+	en	Daemon restarted.
+
+RAOPBRIDGEAP2_STOP
+	ru	Остановить
+	en	Stop
+
+RAOPBRIDGEAP2_STOP_CONFIRM
+	ru	Остановить демон? Плееры исчезнут из LMS.
+	en	Stop the daemon? Players will disappear from LMS.
+
+RAOPBRIDGEAP2_STOPPED
+	ru	Демон остановлен.
+	en	Daemon stopped.
+
+RAOPBRIDGEAP2_DEVICES
+	ru	Устройства AirPlay
+	en	AirPlay devices
+
+RAOPBRIDGEAP2_DEVICES_DESC
+	ru	Скан (squeeze2raop -i) находит все AirPlay-устройства и записывает их в конфиг. После скана включите нужные (enabled="1") в конфиге ниже и нажмите Сохранить.
+	en	Scan (squeeze2raop -i) discovers all AirPlay devices and writes them to the config. After scanning enable the ones you want (enabled="1") in the config below and press Save.
+
+RAOPBRIDGEAP2_SCAN
+	ru	Найти устройства
+	en	Start Discovery Scan
+
+RAOPBRIDGEAP2_SCAN_HINT
+	ru	~15-25 секунд. Не забудьте Сохранить после скана.
+	en	takes ~15-25 seconds. Remember to Save after scanning.
+
+RAOPBRIDGEAP2_SCANNED
+	ru	Скан завершён — конфиг обновлён, устройства ниже.
+	en	Scan finished - config updated, devices below.
+
+RAOPBRIDGEAP2_SCANERROR
+	ru	Ошибка скана
+	en	Scan error
+
+RAOPBRIDGEAP2_CONFIG
+	ru	Конфигурация (config.xml)
+	en	Configuration (config.xml)
+
+RAOPBRIDGEAP2_CONFIG_DESC
+	ru	Файл конфигурации squeeze2raop. Устройство становится плеером LMS при enabled="1".
+	en	squeeze2raop config file. A device becomes an LMS player when enabled="1".
+
+RAOPBRIDGEAP2_CONFIG_NOTE
+	ru	Сохранение перезапускает демон.
+	en	Saving restarts the daemon.
+
+RAOPBRIDGEAP2_SAVED
+	ru	Конфиг сохранён, демон перезапущен.
+	en	Config saved, daemon restarted.
+
+RAOPBRIDGEAP2_ENABLED
+	ru	Запускать демон автоматически
+	en	Start daemon automatically
+
+RAOPBRIDGEAP2_ENABLED_DESC
+	ru	Демон стартует вместе с LMS и перезапускается при падении (проверка раз в 30 секунд).
+	en	The daemon starts with LMS and restarts if crashed (checked every 30 seconds).
+
+RAOPBRIDGEAP2_BINPATH
+	ru	Путь к бинаррю squeeze2raop (пусто = авто из Bin/)
+	en	Path to squeeze2raop binary (empty = auto from Bin/)
+
+RAOPBRIDGEAP2_BINPATH_DESC
+	ru	Свой путь, если хотите использовать другой билд.
+	en	Custom path if you want another build.
+
+RAOPBRIDGEAP2_LOG
+	ru	Лог (последние строки)
+	en	Log (tail)

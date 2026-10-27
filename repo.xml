@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LMS Custom Repository descriptor for RaopBridgeAP2.
+    Публикация: bump version в RaopBridgeAP2/install.xml и здесь,
+    ./make_dist.sh, создать release, обновить sha= и url=.
+-->
+<extensions>
+    <details>
+        <title lang="EN">RaopBridgeAP2 Repository</title>
+        <title lang="RU">Репозиторий RaopBridgeAP2</title>
+    </details>
+    <plugins>
+        <plugin
+            name="RaopBridgeAP2"
+            version="0.1"
+            target="unix"
+            minTarget="8.0"
+            maxTarget="*"
+            sha="0000000000000000000000000000000000000000"
+            url="https://example.com/RaopBridgeAP2-v0.1.zip"
+            creator="Konstantin"
+        >
+            <title lang="EN">Raop Bridge AP2</title>
+            <title lang="RU">Raop Bridge AP2</title>
+            <desc lang="EN">AirPlay 2 (HomePodOS 27+) via libraop PR #55</desc>
+            <desc lang="RU">AirPlay 2 (HomePodOS 27+) через libraop PR #55</desc>
+        </plugin>
+    </plugins>
+</extensions>
