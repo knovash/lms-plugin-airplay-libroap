@@ -16,8 +16,8 @@
             target="unix"
             minTarget="8.0"
             maxTarget="*"
-            sha="0000000000000000000000000000000000000000"
-            url="https://example.com/RaopBridgeAP2-v0.1.zip"
+            sha="a3c904c05dd52c4a669e2bb9437be7dfc6e84ce9"
+            url="https://github.com/knovash/lms-plugin-airplay-libroap/releases/download/v0.1/RaopBridgeAP2-v0.1.zip"
             creator="Konstantin"
         >
             <title lang="EN">Raop Bridge AP2</title>

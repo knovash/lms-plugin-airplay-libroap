@@ -100,6 +100,35 @@ ChaCha20-Poly1305, бинарный plist SETUP, NTP-timing AirPlay 2 realtime s
 
 ## Сейчас делаю
 
+**17.11 ~13:2x — Задача 13: repo.xml ГОТОВ И ЗАПУШЕН, ЖДЁМ GitHub Release от владельца.**
+- repo.xml: sha=a3c904c05dd52c4a669e2bb9437be7dfc6e84ce9, url=asset v0.1
+  (releases/download/v0.1/RaopBridgeAP2-v0.1.zip); версии 0.1 синхронны
+  (install.xml уже 0.1, бамп не нужен). Коммит+пуш main, raw проверен.
+- ВЛАДЕЛЬЦУ: GitHub → Releases → «Draft a new release» → tag **v0.1** →
+  attach **dist/RaopBridgeAP2-v0.1.zip** (имя файла НЕ менять!) → Publish.
+- ПОСЛЕ релиза (Cline): скачать asset, сверить sha1 бит-в-бит (=a3c904c0…),
+  закрыть Задачу 13 здесь, коммит+пуш. Установка для всех: LMS → Settings →
+  Plugins → Additional Repositories → raw-URL repo.xml ветки main.
+
+**17.11 ~13:05 — ГОТОВО: живая проверка на .131 — плагин ЗДОРОВ.**
+- Демон pid 468243, работает с 12:37:50 (рестарт = Save владельца в вебе), RSS 12МБ;
+  LMS active, бокс up 4 дня, load ~2/4 ядра, RAM avail 1144М.
+- Бинарь на хосте sha1 a6e15c66… = локальному Bin/ (патч громкости v2) — совпадает.
+- 3 коннекта демона к 127.0.0.1:3483 (HomePod1/2/3); LMS player count 5
+  (3 наших + сторонние). На старте рендереры найдены (HomePod2@192.168.1.121 …);
+  в конфиге НОВЫЕ устройства: SoundSystem_A3FC-2 (Radiotechnika, дублирует
+  CastBridge — не включать) и «Yandex Lite» (станция отдаёт RAOP) — оба enabled=0.
+- Лог 27МБ: 35 стартов демона за 3 недели — это Save/рестарты LMS, НЕ крэши.
+  Ошибки только периодические «cannot get metadata/gettime» у idle-плеера
+  [0xca08b8] — на звук не влияют. Громкость монотонна (device:0 → -144dB mute floor).
+- dist актуален: sha1 a3c904c0…, внутри бинарь a6e15c66 + Plugin/Settings/install —
+  готов к релизу как есть. gh CLI на рабочей машине НЕТ → Release создаёт владелец.
+- РЕЛИЗ (Задача 13): в гите релиза НЕТ; на .131 плагин подключён РУЧНЫМ rsync-
+  деплоем (deploy_on_lms.sh — LMS читает папку Plugins независимо от GitHub).
+  Релиз+repo.xml нужны ТОЛЬКО для штатной установки/обновлений через LMS
+  «Additional Repositories» (сейчас в repo.xml заглушки sha/url).
+  Рекомендация: релиз сделать. ЖДЁМ решения владельца.
+
 **Сборка ЗАВЕРШЕНА (BUILD OK, 21:13).** Задачи 4–8 закрыты:
 - libraop(airplay2) собран, targets .a подменён (бэкап .orig на хосте)
 - squeeze2raop v1.8.12 (Oct 26 2026) собран: dynamic 1.8M + **static 9M**
