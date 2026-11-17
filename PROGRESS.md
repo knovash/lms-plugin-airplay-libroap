@@ -16,16 +16,14 @@ ChaCha20-Poly1305, бинарный plist SETUP, NTP-timing AirPlay 2 realtime s
 
 1. [x] Клонировать philippe44/LMS-Raop в `build/LMS-Raop` (master @ 681a52e)
 2. [x] В `application/libraop` переключиться на ветку `airplay2` @ **8714fc8**
-3. [ ] В `application/crosstools` переключиться на ветку `airplay2` @ **0563712**
-       (нужен cross_ssl для HomeKit pairing) — ⚠️ СЕЙЧАС crosstools на master @ dc6c109
-4. [ ] Пересобрать libraop и заменить `targets/linux/aarch64/libraop.a`
-       — ⚠️ ЕЩЁ НЕ ДЕЛАЛОСЬ: `lib/linux/` отсутствует, .a в targets — стоковый
-5. [ ] Собрать статический `squeeze2raop-linux-aarch64-static`
-       — ⚠️ `build/LMS-Raop/bin/` отсутствует (бинаррь не собран)
-6. [ ] Скопировать бинаррь в `RaopBridgeAP2/Bin/` — ⚠️ ПАПКА ПУСТАЯ
-7. [ ] Проверить плагин на живом LMS (arm64-хост)
-8. [ ] `./make_dist.sh` → dist/RaopBridgeAP2-v0.1.zip + sha1
-9. [ ] Опубликовать release, обновить `repo.xml` (sha=, url= — сейчас заглушки)
+3. [x] crosstools → ветка `airplay2` @ **0563712** (cross_ssl для HomeKit pairing)
+4. [x] libraop пересобран, `targets/linux/aarch64/libraop.a` подменён (бэкап .orig)
+5. [x] Статический `squeeze2raop-linux-aarch64-static` собран (v1.8.12, sha1 a6e15c66)
+6. [x] Бинаррь в `RaopBridgeAP2/Bin/` (9 МБ, ELF aarch64, stripped)
+7. [x] Проверен на живом LMS .131 — звук AirPlay2 подтверждён, громкость работает
+8. [x] `./make_dist.sh` → dist/RaopBridgeAP2-v0.1.zip, sha1 a3c904c0…
+9. [x] **RELEASE v0.1 ОПУБЛИКОВАН 17.11** — asset сверен бит-в-бит, repo.xml
+       с реальными sha/url, raw на main проверен
 
 ## Что уже сделано (готово)
 
@@ -100,15 +98,16 @@ ChaCha20-Poly1305, бинарный plist SETUP, NTP-timing AirPlay 2 realtime s
 
 ## Сейчас делаю
 
-**17.11 ~13:2x — Задача 13: repo.xml ГОТОВ И ЗАПУШЕН, ЖДЁМ GitHub Release от владельца.**
-- repo.xml: sha=a3c904c05dd52c4a669e2bb9437be7dfc6e84ce9, url=asset v0.1
-  (releases/download/v0.1/RaopBridgeAP2-v0.1.zip); версии 0.1 синхронны
-  (install.xml уже 0.1, бамп не нужен). Коммит+пуш main, raw проверен.
-- ВЛАДЕЛЬЦУ: GitHub → Releases → «Draft a new release» → tag **v0.1** →
-  attach **dist/RaopBridgeAP2-v0.1.zip** (имя файла НЕ менять!) → Publish.
-- ПОСЛЕ релиза (Cline): скачать asset, сверить sha1 бит-в-бит (=a3c904c0…),
-  закрыть Задачу 13 здесь, коммит+пуш. Установка для всех: LMS → Settings →
-  Plugins → Additional Repositories → raw-URL repo.xml ветки main.
+**17.11 13:31 — RELEASE v0.1 ОПУБЛИКОВАН. Задача 13 закрыта, план п.1–9 ВЫПОЛНЕН полностью.**
+- Владелец создал GitHub Release v0.1; Cline скачал asset (3 785 760 B) и сверил
+  cmp бит-в-бит с dist/RaopBridgeAP2-v0.1.zip — sha1 a3c904c05dd52c4a669e2bb9437be7dfc6e84ce9.
+  raw repo.xml на main = 0.1, sha/url реальные.
+- УСТАНОВКА для любого LMS: Settings → Plugins → Additional Repositories →
+  https://raw.githubusercontent.com/knovash/lms-plugin-airplay-libroap/main/repo.xml
+- ЦЕЛЬ ПРОЕКТА ДОСТИГНУТА: AirPlay2 звук на HomePodOS 27+ через LMS (прод .131,
+  HomePod1/2/3, громкость пропатчена v2). Открытое (по желанию): проверка
+  звука/громкости на слух владельцем; при новых правках — бамп версии и релиз v0.2
+  (чек-лист публикации в шапке repo.xml).
 
 **17.11 ~13:05 — ГОТОВО: живая проверка на .131 — плагин ЗДОРОВ.**
 - Демон pid 468243, работает с 12:37:50 (рестарт = Save владельца в вебе), RSS 12МБ;
